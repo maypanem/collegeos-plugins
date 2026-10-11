@@ -1,0 +1,12 @@
+{
+  "name": "collegeos",
+  "displayName": "CollegeOS",
+  "version": "0.1.1",
+  "description": "Compare colleges with source-backed facts, review your family's saved choices, and continue the next application step.",
+  "author": {
+    "name": "CollegeOS",
+    "url": "https://collegeos.app"
+  },
+  "homepage": "https://collegeos.app",
+  "license": "SEE LICENSE IN LICENSE"
+}

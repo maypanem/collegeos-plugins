@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "collegeos": {
+      "type": "http",
+      "url": "https://collegeos.app/api/family-guide/mcp"
+    }
+  }
+}

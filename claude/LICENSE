@@ -1,0 +1,19 @@
+CollegeOS Plugin Distribution License
+Copyright (c) 2026 CollegeOS. All rights reserved.
+
+Permission is granted to download, install, use, and redistribute unmodified
+copies of this plugin bundle without charge for the purpose of using CollegeOS
+through compatible assistant applications. Redistribution must retain this
+license and the attribution included in the bundle. No right to sell this
+bundle, use CollegeOS trademarks to imply endorsement, or sublicense it is
+granted.
+
+This license covers only the manifest, connection configuration, documentation,
+and skill instructions included in this plugin bundle. It grants no license to
+the CollegeOS hosted service, application source code, college data, or customer
+data. Access to the hosted service remains subject to its terms and the user's
+permissions at https://collegeos.app/terms.
+
+THE BUNDLE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND. TO THE EXTENT
+PERMITTED BY APPLICABLE LAW, THE COPYRIGHT HOLDER IS NOT LIABLE FOR CLAIMS OR
+DAMAGES ARISING FROM USE OF THE BUNDLE.

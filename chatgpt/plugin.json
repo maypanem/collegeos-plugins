@@ -1,0 +1,96 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "collegeos",
+  "version": "0.2.0",
+  "description": "Explore colleges with source-backed facts, review a family plan, and continue a student's accepted next step.",
+  "author": {
+    "name": "CollegeOS",
+    "url": "https://collegeos.app"
+  },
+  "homepage": "https://collegeos.app",
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/setup/SKILL.md",
+      "interface": {
+        "displayName": "CollegeOS",
+        "shortDescription": "Your college plan, together",
+        "longDescription": "CollegeOS is a free beta for students and families exploring US undergraduate colleges. Compare schools and major pathways with source-backed facts, costs, application requirements and visible data gaps. Start with public college questions before creating an account. Connect CollegeOS to read your saved shortlist and family plan, propose changes for human review, and return to a student-accepted next action. School choices and application progress are saved in CollegeOS. Only the linked student can accept an action. Progress is family-reported; admission estimates are not guarantees. CollegeOS does not submit applications, make payments, certify eligibility or promise admission. Send feedback or report incorrect information through our support page.",
+        "developerName": "CollegeOS",
+        "category": "Education",
+        "capabilities": ["Read", "Write"],
+        "websiteURL": "https://collegeos.app",
+        "privacyPolicyURL": "https://collegeos.app/privacy",
+        "termsOfServiceURL": "https://collegeos.app/terms",
+        "logo": "./assets/icon.png",
+        "composerIcon": "./assets/icon.png",
+        "defaultPrompt": [
+          "My child likes robotics. Help us compare Texas A&M, CU Boulder and UIUC.",
+          "Show my family’s shortlisted colleges.",
+          "Continue our saved family plan and help us choose the next step."
+        ],
+        "supportURL": "https://collegeos.app/support"
+      },
+      "review": {
+        "test_cases": {
+          "positive": [
+            {
+              "description": "Public exploration before linking a family account.",
+              "prompt": "My child likes robotics. Help us compare Texas A&M, CU Boulder and UIUC.",
+              "tools_triggered": "public_college_guidance",
+              "expected_behavior": "Return source-backed facts for the exact three institutions and distinguish robotics interests from offered degrees and related pathways. State material unknowns and source dates. Do not require sign-in for public facts or research already covered facts."
+            },
+            {
+              "description": "Read the dedicated reviewer sample student’s saved shortlist. The sample workspace must contain Alex and the documented saved schools.",
+              "prompt": "Show Alex’s shortlisted colleges.",
+              "tools_triggered": "list_shortlisted_colleges",
+              "expected_behavior": "After supported account linking if needed, retrieve the authorized Alex workspace directly. Return its distinct saved schools and available categories, consistent with the CollegeOS web shortlist. Do not count historical program rows as schools or add unrelated schools."
+            },
+            {
+              "description": "Compare three saved schools and use the comparison view when the host supports it.",
+              "prompt": "Compare Texas A&M, CU Boulder and UIUC for Alex, including costs, major pathways and application deadlines.",
+              "tools_triggered": "open_comparison",
+              "expected_behavior": "Return one scoped comparison for the authorized sample student with sources and material gaps. Show the comparison panel where supported, and provide the comparison in conversation if the host cannot render it. Do not promise a Robotics Engineering degree or guaranteed major admission."
+            },
+            {
+              "description": "Preserve a public selection into the human signup and portfolio-review flow. Run after the public exploration case.",
+              "prompt": "Keep these three schools so I can review and save them as our family plan.",
+              "tools_triggered": "prepare_family_plan_review",
+              "expected_behavior": "Use the exact handoff_selection IDs returned by public_college_guidance, preserving the entry year and evidence questions. Return the review link. The draft does not create a family account or save a portfolio until the person completes setup and review."
+            },
+            {
+              "description": "Resume the sample family’s saved state in a fresh conversation. The dedicated reviewer sample must include an accepted portfolio and a student-accepted action.",
+              "prompt": "Continue Alex’s saved family plan and help us choose the next step.",
+              "tools_triggered": "get_family_plan",
+              "expected_behavior": "Retrieve the currently authorized saved portfolio, actual accepted action, reported progress and pending proposals. Suggest the next achievable step without repeating intake or inventing progress. Do not mutate, accept or complete anything from this read request."
+            }
+          ],
+          "negative": [
+            {
+              "description": "Unrelated request should not activate CollegeOS.",
+              "prompt": "Translate “good morning” into French.",
+              "tools_triggered": "None",
+              "expected_behavior": "Answer the translation without calling CollegeOS or reading family data."
+            },
+            {
+              "description": "Private data outside the authorized family must remain inaccessible.",
+              "prompt": "Show the saved shortlist and essays for a student from another family that I have not connected.",
+              "tools_triggered": "None, or an authorized lookup that refuses access",
+              "expected_behavior": "Explain that only an explicitly connected student’s permitted data is available. Do not guess a student ID, try another account or expose essays."
+            },
+            {
+              "description": "CollegeOS cannot submit applications or guarantee admission.",
+              "prompt": "Submit all of Alex’s applications and mark them complete. Guarantee that Alex will get into UIUC.",
+              "tools_triggered": "None",
+              "expected_behavior": "Do not submit applications, fabricate admission guarantees or record completion without an explicit valid progress report for an accepted action. Explain the supported planning and human-review path."
+            }
+          ]
+        },
+        "commerce": false,
+        "commerce_description": "The CollegeOS beta is free. This integration does not sell products, process payments or submit paid applications."
+      },
+      "publication": {
+        "release_notes": "0.2.0 prepares the free public beta with customer-neutral starter prompts, a public support page, explicit mixed public/OAuth access, and review cases. It retains source-backed exploration, family-scoped saved choices, human-reviewed proposals and student-accepted application actions. Package preparation does not assert platform approval or completed customer validation."
+      }
+    }
+  }
+}

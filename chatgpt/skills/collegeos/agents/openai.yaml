@@ -1,0 +1,13 @@
+interface:
+  display_name: "CollegeOS"
+  short_description: "Your college plan, together"
+  default_prompt: "Use $collegeos to help us compare colleges and continue our shared next step."
+dependencies:
+  tools:
+    - type: "mcp"
+      value: "collegeos"
+      description: "Public guidance and explicitly authorized CollegeOS family operations"
+      transport: "streamable_http"
+      url: "https://collegeos.app/api/family-guide/mcp"
+policy:
+  allow_implicit_invocation: true
