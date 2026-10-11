@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "collegeos",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Explore colleges with source-backed facts, review a family plan, and continue a student's accepted next step.",
   "author": {
     "name": "CollegeOS",
@@ -14,9 +14,9 @@
       "interface": {
         "displayName": "CollegeOS",
         "shortDescription": "Your college plan, together",
-        "longDescription": "CollegeOS is a free beta for students and families exploring US undergraduate colleges. Compare schools and major pathways with source-backed facts, costs, application requirements and visible data gaps. Start with public college questions before creating an account. Connect CollegeOS to read your saved shortlist and family plan, propose changes for human review, and return to a student-accepted next action. School choices and application progress are saved in CollegeOS. Only the linked student can accept an action. Progress is family-reported; admission estimates are not guarantees. CollegeOS does not submit applications, make payments, certify eligibility or promise admission. Send feedback or report incorrect information through our support page.",
+        "longDescription": "CollegeOS helps students and families explore US undergraduate colleges. Compare schools and major pathways with source-backed facts, costs, application requirements and visible data gaps. Start with public college questions before creating an account. Connect CollegeOS to read your saved shortlist and family plan, propose changes for human review, and return to a student-accepted next action. School choices and application progress are saved in CollegeOS. Only the linked student can accept an action. Progress is family-reported; admission estimates are not guarantees. CollegeOS does not submit applications, make payments, certify eligibility or promise admission. Send feedback or report incorrect information through our support page.",
         "developerName": "CollegeOS",
-        "category": "Education",
+        "category": "Productivity",
         "capabilities": ["Read", "Write"],
         "websiteURL": "https://collegeos.app",
         "privacyPolicyURL": "https://collegeos.app/privacy",
@@ -89,7 +89,7 @@
         "commerce_description": "The CollegeOS beta is free. This integration does not sell products, process payments or submit paid applications."
       },
       "publication": {
-        "release_notes": "0.2.0 prepares the free public beta with customer-neutral starter prompts, a public support page, explicit mixed public/OAuth access, and review cases. It retains source-backed exploration, family-scoped saved choices, human-reviewed proposals and student-accepted application actions. Package preparation does not assert platform approval or completed customer validation."
+        "release_notes": "0.2.1 corrects the directory category and removes promotional wording from the listing description. The source-backed college exploration, family-scoped saved choices, human-reviewed proposals and student-accepted application actions are unchanged."
       }
     }
   }
