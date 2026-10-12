@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "collegeos",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Explore colleges with source-backed facts, review a family plan, and continue a student's accepted next step.",
   "author": {
     "name": "CollegeOS",
@@ -86,10 +86,11 @@
           ]
         },
         "commerce": false,
-        "commerce_description": "The CollegeOS beta is free. This integration does not sell products, process payments or submit paid applications."
+        "commerce_description": "The CollegeOS beta is free. This integration does not sell products, process payments or submit paid applications.",
+        "demo_recording_url": "https://github.com/maypanem/collegeos-plugins/releases/download/v0.2.2/CollegeOS-reviewer-walkthrough.mp4"
       },
       "publication": {
-        "release_notes": "0.2.1 corrects the directory category and removes promotional wording from the listing description. The source-backed college exploration, family-scoped saved choices, human-reviewed proposals and student-accepted application actions are unchanged."
+        "release_notes": "0.2.2 adds the reviewer walkthrough link required by the submission portal. The MCP endpoint, bundled skills, tool permissions and customer functionality are unchanged. Public directory review and publication remain separate from this source package."
       }
     }
   }
