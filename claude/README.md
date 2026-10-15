@@ -1,58 +1,116 @@
 # CollegeOS for Claude
 
-CollegeOS helps families compare college and major options, keep their saved
-choices in view, and return to a shared application plan. This free beta bundles
-two workflow skills with the CollegeOS connector. CollegeOS charges no beta
-subscription fee; access to Claude and its plugin features depends on your
-Claude plan.
+CollegeOS helps families compare US colleges and majors, keep their saved
+choices in view, and continue a shared college application plan. This free
+beta bundles two workflow skills with the CollegeOS connector. CollegeOS
+charges no beta subscription fee; access to Claude and its plugin features
+depends on your Claude plan.
 
-Add the CollegeOS plugin in Claude, then use its Connectors tab to connect
-CollegeOS when you want your saved family information. You can ask public
-college questions first.
+## Who it is for
 
-## Start with a question
+The plugin is for parents and guardians, and for students 18 or older. It is
+not intended for users under 18. Most of the data it handles concerns a
+student's college application, and that student may be a minor. The person
+who connects chooses which student, if any, the connection may see.
+
+## What it does
+
+Before you sign in, CollegeOS answers public college questions with
+source-backed facts about programs and related pathways, costs and application
+requirements, with missing or dated information labeled as unknown. You can
+start there without a CollegeOS account. When you want to keep the schools you
+explored, CollegeOS gives you a review link that carries those choices into
+account setup, where a person reviews and saves them.
+
+After you sign in and choose a student, Claude can:
+
+- read that student's saved shortlist, comparisons and deadlines, and, if you
+  allow it, the family plan;
+- compare two to four saved schools;
+- suggest changes to the shortlist, school filters, active interests, the
+  family's school portfolio or the next application action. A suggestion saves
+  nothing: a family member reviews it in CollegeOS, and only the linked student
+  can accept, edit or decline an application action;
+- record progress the family reports on an action the student already
+  accepted. This is saved directly, without a separate review step. CollegeOS
+  attributes it to the signed-in person's role (student or parent) and keeps it
+  marked as family-reported, never as a completed school requirement.
+
+Some questions to start with:
 
 - “My child likes robotics. Help us compare Texas A&M, CU Boulder, and UIUC.”
 - “Show my student's shortlisted colleges.”
 - “Continue our saved family plan and help us choose the next step.”
 
-Public school exploration can begin without a CollegeOS account. When you want
-to keep public choices, CollegeOS provides a review link that preserves them
-through account setup. A person reviews and saves the portfolio in CollegeOS.
+## Signing in and choosing what to share
 
-For saved family information, connect CollegeOS from this plugin's Connectors
-tab and sign in. Select the student and permissions you want to share. Saved
-facts, deadlines, and plan information use that authorized student scope.
-Permission to read a plan is separate from permission to propose changes.
+Public questions need no sign-in. The first time you ask for saved family
+information, Claude shows a Connect prompt. Sign in to CollegeOS, then on the
+CollegeOS consent screen choose the student this connection may see and
+whether it may work with the family plan. Connecting does not grant access to
+every student or to future students, and it never includes essay text,
+uploaded documents, transcripts or demographic answers.
 
-## Your choices stay under your control
+You can see recent activity, change the students, turn off family-plan access,
+or revoke the connection at any time in CollegeOS under **Settings → Connected
+AI**. After you revoke it, CollegeOS stops answering the connection's requests
+for student data. You can also disconnect in Claude's own settings.
 
-The assistant can prepare changes for review. A proposal does not change the
-saved shortlist, interests, or portfolio until the authorized person reviews it
-in CollegeOS. Only the linked student can accept an application action. Progress
-is recorded only after an explicit report on an accepted action and remains
-family-reported. Connecting an account does not grant access to every student.
+## Data the connector reads and writes
 
-CollegeOS distinguishes an interest such as robotics from a university's actual
-degree offering. It shows available sources and material uncertainty. Admissions
-estimates are not guarantees; cost figures are not a personal aid offer. Some
-facts may need current verification. If a visual comparison is unavailable in
-your Claude surface, the assistant can present returned facts in text and use
-the supplied CollegeOS review links.
+The connector sends your request (school names, interests and, once you are
+signed in, the student you chose) to `https://collegeos.app/api/claude/mcp`.
+Results become part of your conversation with Claude, and Claude's own
+policies apply to that conversation.
 
-## Data and feedback
+- **Reads**, only for the student you chose: account email, student display
+  name, college lists and shortlists, any Explore view you choose to share,
+  tier and admission-odds estimates, academic inputs (grades, test scores,
+  course rigor), intended majors and interests, activities and awards,
+  deadlines, and essay, recommender and checklist progress. With family-plan
+  permission, also the accepted school portfolio and current action, pending
+  revisions and recent family-reported progress.
+- **Writes**: suggestions waiting for family review, kept as an attributed
+  proposal history, and the family-reported progress records described above.
+  The comparison panel is read-only.
+- **Usage records**: CollegeOS logs each request from the connection (the tool
+  used, the student involved, when it ran, how long it took and whether it
+  succeeded) and records when the connection was last used.
 
-The connector sends the requested school choices or authorized family questions
-to `https://collegeos.app/api/family-guide/mcp`. Results become part of the
-conversation with Claude. Authorized planning operations can store proposed
-changes or reported progress in CollegeOS. This bundle contains instructions and
-connection configuration only: it has no local executable, hooks, embedded
-credentials, or background collection. It does not request essay prose or
-uploaded documents. Other Claude tools used in a conversation have their own
-permissions and policies.
+CollegeOS keeps the connection and the students it may see until you delete
+your CollegeOS account; revoking the connection stops its access immediately.
+The usage log is kept for 180 days. Proposals and
+reported progress are stored in your family's CollegeOS plan. The
+[privacy policy](https://collegeos.app/privacy) has the full retention
+schedule.
 
-Review the [CollegeOS privacy policy](https://collegeos.app/privacy) and
-[service terms](https://collegeos.app/terms). Report wrong facts, confusing
-results, or slow interactions through feedback in the CollegeOS web app. Include
-the question and school names, and avoid pasting private family details into a
-public issue. This beta will improve using customer feedback.
+This bundle contains instructions and connection settings only. It has no
+local program, hooks, embedded credentials or background collection, and it
+sends data to no service other than the CollegeOS connector above. It does not
+ask for essay text or uploaded documents. Other tools you use in the same
+Claude conversation have their own permissions and policies.
+
+## Accuracy and known limits
+
+CollegeOS separates an interest such as robotics from a university's actual
+degree offering and shows its sources and their dates. Admission estimates are
+not guarantees, cost figures are not a personal aid offer, and personal target
+dates are not official deadlines. CollegeOS does not submit applications.
+
+- A comparison of several schools that needs fresh source data can take
+  several minutes to return.
+- Support for Claude Code and Cowork has not been verified yet. This section
+  will say what works there once it has been tested.
+- If Claude cannot show the visual comparison, it presents the same facts in
+  text.
+
+## Support, privacy and terms
+
+For help, wrong facts, slow answers or confusing results, use the
+[CollegeOS support page](https://collegeos.app/support). You can send a
+message without signing in. Tell us that you used Claude, what you asked, what
+happened and what you expected, and remove student names and other personal
+details first.
+
+- [Privacy policy](https://collegeos.app/privacy)
+- [Terms of service](https://collegeos.app/terms)

@@ -18,8 +18,8 @@ Use https://collegeos.app/support for help or feedback. Include only the relevan
 Privacy: https://collegeos.app/privacy
 Terms: https://collegeos.app/terms
 
-Host account, plan, age and regional requirements apply. CollegeOS itself remains free through May 1, 2027.
+Connecting an AI assistant to CollegeOS is for parents and guardians, and for students 18 or older. Host account, plan, age and regional requirements also apply. CollegeOS itself remains free through May 1, 2027.
 
 ## Releases
 
-Version 0.2.0 prepares public distribution. The service is hosted by CollegeOS and updated separately. Package files contain no credentials. See `claude/RELEASING.md` for the Claude structure and validation path.
+Each package's version is in its manifest: `chatgpt/plugin.json` and `claude/.claude-plugin/plugin.json`. ChatGPT releases are tagged `vX.Y.Z`. Claude releases are tagged `claude-vX.Y.Z`, and the Claude directory reads the `claude-release` branch. The service is hosted by CollegeOS and updated separately. Package files contain no credentials. See `claude/RELEASING.md` for the Claude structure and validation path.
