@@ -1,14 +1,16 @@
 {
   "name": "collegeos",
   "displayName": "CollegeOS",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Compare colleges with source-backed facts, review your family's saved choices, and continue the next application step.",
   "author": {
     "name": "CollegeOS",
     "url": "https://collegeos.app"
   },
   "homepage": "https://collegeos.app",
+  "documentationUrl": "https://github.com/maypanem/collegeos-plugins/tree/main/claude#readme",
+  "supportUrl": "https://collegeos.app/support",
   "privacyPolicyUrl": "https://collegeos.app/privacy",
-  "icon": "./.claude-plugin/icon.jpg",
-  "license": "SEE LICENSE IN LICENSE"
+  "termsOfServiceUrl": "https://collegeos.app/terms",
+  "icon": "./assets/icon.jpg"
 }
